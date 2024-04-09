@@ -3,6 +3,8 @@ from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from datetime import datetime
+import io
+import pyexcel as p
 import os
 
 app = Flask(__name__)
@@ -11,7 +13,6 @@ if uri and uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 app.config["SQLALCHEMY_DATABASE_URI"] = uri
 db = SQLAlchemy(app)
-
 
 # Configurações do Flask-Mail
 app.config["MAIL_SERVER"] = "smtp.hostinger.com"
@@ -103,6 +104,31 @@ def add_inscricao():
     send_email(to_email, subject, html_content)
 
     return redirect(url_for("index", success=True))
+
+
+@app.route("/inscricoes", methods=["GET"])
+def listar_inscricoes():
+    inscricoes = Inscricao.query.all()
+    return render_template("listar_inscricoes.html", inscricoes=inscricoes)
+
+
+# Rota para baixar os dados em Excel
+@app.route("/download_excel", methods=["GET"])
+def download_excel():
+    query_sets = Inscricao.query.all()
+    data = [inscricao.to_dict() for inscricao in query_sets]
+
+    output = io.BytesIO()
+    sheet = p.get_sheet(records=data)
+    sheet.save_to_memory("xlsx", output)
+    output.seek(0)
+
+    return send_file(
+        output,
+        as_attachment=True,
+        download_name="Inscricoes.xlsx",
+        mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
 
 
 if __name__ == "__main__":
