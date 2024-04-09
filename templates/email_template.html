@@ -1,0 +1,104 @@
+<!-- templates/email_template.html -->
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        color: #444444; /* Cor do texto em preto */
+        text-align: justify;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        margin-left: 5px;
+      }
+      .header-img {
+        width: 100%; /* Faz a imagem ocupar toda a largura do container */
+        height: auto; /* Mantém a proporção da imagem */
+        display: block; /* Exibe a imagem como um bloco */
+        margin: 0 auto; /* Centraliza a imagem horizontalmente */
+      }
+      h1,
+      h2 {
+        color: #5c4033; /* Tons escuros de marrom para h1 e h2 */
+      }
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        background: #010a29; /* Cor de fundo do rodapé em um tom marrom */
+        color: #ffffff; /* Cor do texto no rodapé em branco para contraste */
+      }
+      .logo {
+        width: 60px; /* Ajuste a largura conforme necessário */
+        margin-right: 10px;
+      }
+      .address {
+        font-size: 0.9em;
+        text-align: left;
+        max-width: 90%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        class="header-img"
+        src="https://i.imgur.com/4VgVUtN.png"
+        alt="Logo da Empresa"
+      />
+      <h1>Confirmação de Inscrição</h1>
+      <h2>Prezado(a) {{ nome }},</h2>
+      <p>
+        Agradecemos sua inscrição para o
+        <strong>SEMINÁRIO NACIONAL DE TRIBUTAÇÃO DO AGRONEGÓCIO</strong>. Este
+        evento é uma oportunidade única de se aprofundar nos temas tributários
+        relevantes ao setor agropecuário, com foco em práticas e soluções
+        inovadoras.
+      </p>
+      <p>
+        O seminário será realizado no dia <strong>22 de maio de 2024</strong>,
+        das <strong>8h da manhã às 11h45</strong>, e contará com a emissão de
+        <strong>certificado de participação de 3 horas</strong>. O evento
+        ocorrerá no auditório da CNA, localizado no endereço:
+      </p>
+      <p>
+        Sistema CNA / SENAR / Instituto CNA<br />
+        SGAN Quadra 601, Módulo K - Ed. Antônio Ernesto de Salvo<br />
+        Brasília - Distrito Federal<br />
+        CEP: 70830-903<br />
+        Telefone: (61) 2109-1400<br />
+      </p>
+      <p>
+        Lembramos que será necessário realizar a identificação na recepção do
+        local. Encorajamos todos os participantes a chegarem com antecedência
+        para facilitar o processo de entrada.
+      </p>
+      <p>Atenciosamente,</p>
+      <p>Sistema CNA/Senar/ICNA</p>
+
+      <div class="footer">
+        <img
+          src="https://i.imgur.com/tAZu4tq.png"
+          alt="Logo da Empresa"
+          class="logo"
+        />
+        <div class="address">
+          SGAN Quadra 601, Módulo K - Ed. Antônio Ernesto de Salvo<br />
+          Brasília - Distrito Federal, CEP: 70830-903.<br />
+          Sistema CNA/SENAR/ICNA.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
