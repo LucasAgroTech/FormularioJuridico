@@ -57,9 +57,6 @@ def create_tables():
         db.create_all()
 
 
-create_tables()
-
-
 @app.route("/", methods=["GET"])
 def index():
     return render_template("formulario.html")
